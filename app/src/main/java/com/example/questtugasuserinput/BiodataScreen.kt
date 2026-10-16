@@ -203,6 +203,11 @@ fun BiodataScreen() {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
+                    Row(
+                        horizontalArrangement =
+                            Arrangement.SpaceBetween,
+                        modifier = Modifier.fillMaxWidth()
+                    )
 
                 }
             }
