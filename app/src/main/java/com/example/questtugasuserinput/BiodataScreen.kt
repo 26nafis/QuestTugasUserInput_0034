@@ -142,6 +142,22 @@ fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Un
                     )
                     spacer(modifier = Modifier.height(16.dp))
 
+                    Row {
+                        outlineTextField(
+                            modifier = Modifier.weight(if),
+                            value = "",
+                            onValuechange = {},
+                            label = {
+                                Text(
+                                    stringResource(
+                                        id = R.string.birth_date
+                                    )
+                                )
+                            }
+
+                        )
+                            spacer(modifier = Modifier.width(8.dp))
+                            )
                     }
                 }
             }
