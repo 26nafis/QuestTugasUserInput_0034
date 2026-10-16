@@ -223,7 +223,12 @@ fun BiodataScreen() {
                             uiux = it
                         }
 
-
+                        SkillCheckBox(
+                            text = stringResource(R.string.web),
+                            checked = web
+                        ) {
+                            web = it
+                        }
                     }
 
                 }
