@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -127,8 +128,21 @@ fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Un
                     }
 
                     spacer(modifier = Modifier.height(16.dp))
+                    OutlinedTextField(
+                        modifier = Modifier.fillMaxSize(),
+                        value = email,
+                        onValueChange = {
+                            email = it
+                        },
+                        Text = {
+                            stringResource(
+                                id = R.string.email
+                            )
+                        }
+                    )
+                    spacer(modifier = Modifier.height(16.dp))
 
-
+                    }
                 }
             }
         }
