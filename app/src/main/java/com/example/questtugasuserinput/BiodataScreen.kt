@@ -241,7 +241,14 @@ fun BiodataScreen() {
                                 id = R.color.button_color
                             )
                         )
-                    )
+                    ) {
+
+                        Text(
+                            text = stringResource(
+                                id = R.string.proceed
+                            )
+                        )
+                    }
                 }
             }
         }
