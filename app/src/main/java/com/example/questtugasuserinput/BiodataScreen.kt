@@ -207,7 +207,16 @@ fun BiodataScreen() {
                         horizontalArrangement =
                             Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
-                    )
+                    ) {
+
+                        SkillCheckBox(
+                            text = stringResource(R.string.android),
+                            checked = android
+                        ) {
+                            android = it
+                        }
+
+                    }
 
                 }
             }
