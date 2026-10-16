@@ -125,6 +125,8 @@ fun BiodataScreen() {
                             }
                         )
 
+                        Spacer(modifier = Modifier.width(8.dp))
+
                     }
 
                 }
