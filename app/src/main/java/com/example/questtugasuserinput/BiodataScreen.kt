@@ -179,6 +179,18 @@ fun BiodataScreen() {
 
                         Spacer(modifier = Modifier.width(8.dp))
 
+                        OutlinedTextField(
+                            modifier = Modifier.weight(1f),
+                            value = "",
+                            onValueChange = {},
+                            label = {
+                                Text(
+                                    stringResource(
+                                        id = R.string.experience
+                                    )
+                                )
+                            }
+                        )
                     }
 
                 }
