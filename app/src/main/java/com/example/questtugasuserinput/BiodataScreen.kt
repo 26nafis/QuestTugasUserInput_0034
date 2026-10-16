@@ -254,3 +254,23 @@ fun BiodataScreen() {
         }
     }
 }
+
+@Composable
+fun SkillCheckBox(
+    text: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
+) {
+
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+
+        Checkbox(
+            checked = checked,
+            onCheckedChange = onCheckedChange
+        )
+
+        Text(text = text)
+    }
+}
