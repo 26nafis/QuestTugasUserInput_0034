@@ -216,6 +216,14 @@ fun BiodataScreen() {
                             android = it
                         }
 
+                        SkillCheckBox(
+                            text = stringResource(R.string.uiux),
+                            checked = uiux
+                        ) {
+                            uiux = it
+                        }
+
+
                     }
 
                 }
