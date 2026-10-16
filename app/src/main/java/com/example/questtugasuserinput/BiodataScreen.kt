@@ -8,17 +8,22 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 
 @Composable
-fun BiodataScreen(){
+fun BiodataScreen(spacer: (Modifier) -> Unit) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -62,7 +67,30 @@ fun BiodataScreen(){
                             id = R.dimen.padding_large
                         )
                     )
-                ) { }
+                ) {
+                    Text (
+                        text = stringResource(
+                            id = R.string.title_form
+                        ),
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = colorResource(
+                            id = R.color.purple_primary
+                        )
+                    )
+
+                    spacer(modifier = Modifier.height (8.dp))
+
+                    Text(
+                        text = stringResource(
+                            id = R.string.subtitle_form
+                        ),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+
+                    spacer(modifier=Modifier.height(24.dp))
+
+
+                }
             }
         }
     }
