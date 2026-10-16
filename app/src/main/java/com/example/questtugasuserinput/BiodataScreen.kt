@@ -31,7 +31,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
 
 
@@ -41,6 +40,8 @@ fun BiodataScreen() {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
+    var tglLahir by remember { mutableStateOf("") }
+    var experience by remember { mutableStateOf("") }
 
     var android by remember { mutableStateOf(false) }
     var uiux by remember { mutableStateOf(false) }
@@ -166,8 +167,10 @@ fun BiodataScreen() {
 
                         OutlinedTextField(
                             modifier = Modifier.weight(1f),
-                            value = "",
-                            onValueChange = {},
+                            value = "tglLahir",
+                            onValueChange = {
+                                tglLahir = it
+                            },
                             label = {
                                 Text(
                                     stringResource(
@@ -181,8 +184,10 @@ fun BiodataScreen() {
 
                         OutlinedTextField(
                             modifier = Modifier.weight(1f),
-                            value = "",
-                            onValueChange = {},
+                            value = "experience",
+                            onValueChange = {
+                                experience = it
+                            },
                             label = {
                                 Text(
                                     stringResource(
