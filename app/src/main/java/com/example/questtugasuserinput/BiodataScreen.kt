@@ -4,12 +4,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -17,17 +22,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+
 
 @Composable
-fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Unit) {
+fun BiodataScreen() {
+
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -49,22 +59,26 @@ fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Un
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .height(
                         dimensionResource(
                             id = R.dimen.header_height
                         )
                     )
             )
+
             Card(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .padding(top = 180.dp, start = 16.dp, end = 16.dp),
 
-                shape = RoundedCornerShape(dimensionResource(
-                    id = R.dimen.card_radius
-                ))
+                shape = RoundedCornerShape(
+                    dimensionResource(
+                        id = R.dimen.card_radius
+                    )
+                )
             ) {
+
                 Column(
                     modifier = Modifier.padding(
                         dimensionResource(
@@ -72,7 +86,8 @@ fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Un
                         )
                     )
                 ) {
-                    Text (
+
+                    Text(
                         text = stringResource(
                             id = R.string.title_form
                         ),
@@ -82,7 +97,7 @@ fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Un
                         )
                     )
 
-                    spacer(modifier = Modifier.height (8.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
                         text = stringResource(
@@ -91,12 +106,12 @@ fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Un
                         style = MaterialTheme.typography.bodySmall
                     )
 
-                    spacer(modifier=Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
 
                     Row {
 
-                        outlineTextField(
-                            moodifier = Modifier.weight(if),
+                        OutlinedTextField(
+                            modifier = Modifier.weight(1f),
                             value = firstName,
                             onValueChange = {
                                 firstName = it
@@ -109,56 +124,9 @@ fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Un
                                 )
                             }
                         )
-                            spacer(modifier = Modifier.width(8.dp))
 
-                            OutlinedTextField(
-                                moodifier = Modifier.weight(if),
-                                value = lastName,
-                                onValuevhange = {
-                                    lastName = it
-                                },
-                                label = {
-                                    Text(
-                                        stringResource(
-                                            id = R.string.last_name
-                                        )
-                                    )
-                                }
-                            )
                     }
 
-                    spacer(modifier = Modifier.height(16.dp))
-                    OutlinedTextField(
-                        modifier = Modifier.fillMaxSize(),
-                        value = email,
-                        onValueChange = {
-                            email = it
-                        },
-                        Text = {
-                            stringResource(
-                                id = R.string.email
-                            )
-                        }
-                    )
-                    spacer(modifier = Modifier.height(16.dp))
-
-                    Row {
-                        outlineTextField(
-                            modifier = Modifier.weight(if),
-                            value = "",
-                            onValuechange = {},
-                            label = {
-                                Text(
-                                    stringResource(
-                                        id = R.string.birth_date
-                                    )
-                                )
-                            }
-
-                        )
-                            spacer(modifier = Modifier.width(8.dp))
-                            )
-                    }
                 }
             }
         }
