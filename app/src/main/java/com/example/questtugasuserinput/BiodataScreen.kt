@@ -233,7 +233,15 @@ fun BiodataScreen() {
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-
+                    Button(
+                        onClick = {},
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(
+                                id = R.color.button_color
+                            )
+                        )
+                    )
                 }
             }
         }
