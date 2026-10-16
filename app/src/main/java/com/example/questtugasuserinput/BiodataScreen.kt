@@ -1,6 +1,12 @@
 package com.example.questtugasuserinput
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 @Composable
-fun BiodataScreen(){}
+fun BiodataScreen(){
+    var firstName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+}
