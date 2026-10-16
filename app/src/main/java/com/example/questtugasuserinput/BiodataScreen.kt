@@ -3,9 +3,11 @@ package com.example.questtugasuserinput
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -16,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -23,7 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun BiodataScreen(spacer: (Modifier) -> Unit) {
+fun BiodataScreen(spacer: (Modifier) -> Unit, outlineTextField: (Modifier) -> Unit) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -88,6 +91,42 @@ fun BiodataScreen(spacer: (Modifier) -> Unit) {
                     )
 
                     spacer(modifier=Modifier.height(24.dp))
+
+                    Row {
+
+                        outlineTextField(
+                            moodifier = Modifier.weight(if),
+                            value = firstName,
+                            onValueChange = {
+                                firstName = it
+                            },
+                            label = {
+                                Text(
+                                    stringResource(
+                                        id = R.string.first_name
+                                    )
+                                )
+                            }
+                        )
+                            spacer(modifier = Modifier.width(8.dp))
+
+                            OutlinedTextField(
+                                moodifier = Modifier.weight(if),
+                                value = lastName,
+                                onValuevhange = {
+                                    lastName = it
+                                },
+                                label = {
+                                    Text(
+                                        stringResource(
+                                            id = R.string.last_name
+                                        )
+                                    )
+                                }
+                            )
+                    }
+
+                    spacer(modifier = Modifier.height(16.dp))
 
 
                 }
