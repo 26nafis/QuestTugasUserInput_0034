@@ -32,6 +32,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 
 @Composable
@@ -46,6 +48,19 @@ fun BiodataScreen() {
     var android by remember { mutableStateOf(false) }
     var uiux by remember { mutableStateOf(false) }
     var web by remember { mutableStateOf(false) }
+
+    var namaLengkap by remember { mutableStateOf("") }
+    var emailHasil by remember { mutableStateOf("") }
+    var tglLahirHasil by remember { mutableStateOf("") }
+    var experienceHasil by remember { mutableStateOf("") }
+    var skillHasil by remember { mutableStateOf("") }
+
+    val isFormValid =
+        firstName.isNotEmpty() &&
+                lastName.isNotEmpty() &&
+                email.isNotEmpty() &&
+                tglLahir.isNotEmpty() &&
+                experience.isNotEmpty()
 
     Scaffold { paddingValues ->
 
@@ -81,11 +96,13 @@ fun BiodataScreen() {
             ) {
 
                 Column(
-                    modifier = Modifier.padding(
-                        dimensionResource(
-                            id = R.dimen.padding_large
+                    modifier = Modifier
+                        .padding(
+                            dimensionResource(id = R.dimen.padding_large)
                         )
-                    )
+                        .verticalScroll(
+                            rememberScrollState()
+                        )
                 ) {
 
                     Text(
@@ -167,7 +184,7 @@ fun BiodataScreen() {
 
                         OutlinedTextField(
                             modifier = Modifier.weight(1f),
-                            value = "tglLahir",
+                            value = tglLahir,
                             onValueChange = {
                                 tglLahir = it
                             },
@@ -184,7 +201,7 @@ fun BiodataScreen() {
 
                         OutlinedTextField(
                             modifier = Modifier.weight(1f),
-                            value = "experience",
+                            value = experience,
                             onValueChange = {
                                 experience = it
                             },
@@ -239,21 +256,81 @@ fun BiodataScreen() {
                     Spacer(modifier = Modifier.height(24.dp))
 
                     Button(
-                        onClick = {},
                         modifier = Modifier.fillMaxWidth(),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(
-                                id = R.color.button_color
-                            )
-                        )
-                    ) {
+                        enabled = isFormValid,
+                        onClick = {
 
+                            namaLengkap = "$firstName $lastName"
+                            emailHasil = email
+                            tglLahirHasil = tglLahir
+                            experienceHasil = experience
+
+                            skillHasil = buildString {
+                                if (android) append("Android ")
+                                if (uiux) append("UI/UX ")
+                                if (web) append("Web ")
+                            }
+                        }
+                    ) {
                         Text(
-                            text = stringResource(
-                                id = R.string.proceed
-                            )
+                            text = stringResource(R.string.proceed)
                         )
                     }
+
+                    Spacer(
+                        modifier = Modifier.height(16.dp)
+                    )
+
+                    if (namaLengkap.isNotBlank()) {
+
+                        Card(
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
+
+                            Column(
+                                modifier = Modifier.padding(16.dp)
+                            ) {
+
+                                Text(
+                                    text = "Nama : $namaLengkap"
+                                )
+
+                                Spacer(
+                                    modifier = Modifier.height(4.dp)
+                                )
+
+                                Text(
+                                    text = "Email : $emailHasil"
+                                )
+
+                                Spacer(
+                                    modifier = Modifier.height(4.dp)
+                                )
+
+                                Text(
+                                    text = "Tanggal Lahir : $tglLahirHasil"
+                                )
+
+                                Spacer(
+                                    modifier = Modifier.height(4.dp)
+                                )
+
+                                Text(
+                                    text = "Experience : $experienceHasil"
+                                )
+
+                                Spacer(
+                                    modifier = Modifier.height(4.dp)
+                                )
+
+                                Text(
+                                    text = "Skill : $skillHasil"
+                                )
+                            }
+                        }
+                    }
+
                 }
             }
         }
