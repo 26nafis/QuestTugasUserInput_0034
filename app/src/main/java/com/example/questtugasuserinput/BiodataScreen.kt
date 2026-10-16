@@ -195,6 +195,11 @@ fun BiodataScreen() {
 
                     Spacer(modifier = Modifier.height(24.dp))
 
+                    Text(
+                        text = stringResource(
+                            id = R.string.skill_title
+                        )
+                    )
 
                 }
             }
